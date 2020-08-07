@@ -86,7 +86,13 @@ class HashTable:
         """
         # Your code here
         self.hashtable[self.hash_index(key)] = value
-        return self.hashtable[self.hash_index(key)]
+
+        # find the start of the linked list using the index
+        # search through the linked list
+        # if the key already exists in the linked list
+        # replace the value
+        # else
+        # add new hashtable entry to the head of linked list
 
     def delete(self, key):
         """
@@ -97,6 +103,12 @@ class HashTable:
         Implement this.
         """
         # Your code here
+
+        # hash the key
+        # search through the linked list for the matching key
+        # delete that node
+        # return value of the delete node or None
+
         if self.hashtable[self.hash_index(key)] is None:
             print('Key Does Not Exist')
         else:
@@ -111,6 +123,13 @@ class HashTable:
         Implement this.
         """
         # Your code here
+
+        # get the linked list at the computed index
+        # search through the linked list for the key
+        # compare keys until you find the right one
+        # if it exists, return the value
+        # else return None
+
         return self.hashtable[self.hash_index(key)]
 
     def resize(self, new_capacity):
@@ -121,6 +140,15 @@ class HashTable:
         Implement this.
         """
         # Your code here
+
+        # Make a new array thats DOUBLE the current size
+        # go through each linked list in the array
+        # go through each item and rehash it
+        # insert the items into their new locations
+
+    def shrink(self):
+        # same as resize but reduce array by half
+        pass
 
 
 if __name__ == "__main__":
