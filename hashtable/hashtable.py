@@ -28,6 +28,7 @@ class HashTable:
         # Your code here
         self.capacity = capacity
         self.hashtable = [None] * capacity
+        self.added_items = 0
 
     def get_num_slots(self):
         """
@@ -49,6 +50,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        return self.added_items // self.capacity
 
     def fnv1(self, key):
         """
@@ -99,6 +101,7 @@ class HashTable:
         index = self.hashtable[hashed_key]
         if self.hashtable[hashed_key] == None:
             self.hashtable[hashed_key] = HashTableEntry(key, value)
+            self.added_items += 1
             return self.hashtable[hashed_key].value
         else:
             start_index = self.hashtable[hashed_key]
@@ -111,6 +114,7 @@ class HashTable:
             new_entry = HashTableEntry(key, value)
             new_entry.next = old_index
             self.hashtable[hashed_key] = new_entry
+            self.added_items += 1
             return self.hashtable[hashed_key].value
 
     def delete(self, key):
@@ -137,8 +141,10 @@ class HashTable:
                 if node.key == key:
                     if prev is None:
                         self.hashtable[hash_val] = None
+                        self.added_items -= 1
                         return self.hashtable[hash_val]
                     prev.next = node.next
+                    self.added_items -= 1
                     return node.value
                 prev = node
                 node = node.next
@@ -177,12 +183,18 @@ class HashTable:
         Implement this.
         """
         # Your code here
-
         # Make a new array thats DOUBLE the current size
         # go through each linked list in the array
         # go through each item and rehash it
         # insert the items into their new locations
-        pass
+        old_arr = self.hashtable
+        self.hashtable = [None] * new_capacity
+        for i in range(0, len(old_arr)):
+            if old_arr[i] is not None:
+                node = old_arr[i]
+                while node is not None:
+                    self.put(node.key, node.value)
+                    node = node.next
 
     def shrink(self):
         # same as resize but reduce array by half
