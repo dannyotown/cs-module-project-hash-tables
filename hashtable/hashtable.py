@@ -204,40 +204,34 @@ class HashTable:
 if __name__ == "__main__":
     ht = HashTable(8)
 
-    ht.put("key-0", "val-0")
-    ht.put("key-1", "val-1")
-    ht.put("key-2", "val-2")
-    ht.put("key-3", "val-3")
-    ht.put("key-4", "val-4")
-    ht.put("key-5", "val-5")
-    ht.put("key-6", "val-6")
-    ht.put("key-7", "val-7")
-    ht.put("key-8", "val-8")
-    ht.put("key-9", "val-9")
+    ht.put("line_1", "'Twas brillig, and the slithy toves")
+    ht.put("line_2", "Did gyre and gimble in the wabe:")
+    ht.put("line_3", "All mimsy were the borogoves,")
+    ht.put("line_4", "And the mome raths outgrabe.")
+    ht.put("line_5", '"Beware the Jabberwock, my son!')
+    ht.put("line_6", "The jaws that bite, the claws that catch!")
+    ht.put("line_7", "Beware the Jubjub bird, and shun")
+    ht.put("line_8", 'The frumious Bandersnatch!"')
+    ht.put("line_9", "He took his vorpal sword in hand;")
+    ht.put("line_10", "Long time the manxome foe he sought--")
+    ht.put("line_11", "So rested he by the Tumtum tree")
+    ht.put("line_12", "And stood awhile in thought.")
 
-    return_value = ht.get("key-0")
-    print(return_value)
-    # print(ht.get('line_1'))
-    # print(ht.get('line_2'))
-    # print(ht.get('line_3'))
-    # print(ht.get('line_4'))
-    # print(ht.get('line_5'))
-    # print(ht.get('line_6'))
-    # print(ht.get('line_7'))
-    # print(ht.get('line_8'))
-    # print("")
+    print("")
 
-    # # Test storing beyond capacity
-    # for i in range(1, 13):
-    #     print(ht.get(f"line_{i}"))
+    # Test storing beyond capacity
+    for i in range(1, 13):
+        print(ht.get(f"line_{i}"))
 
-    # # Test resizing
-    # old_capacity = ht.get_num_slots()
-    # ht.resize(ht.capacity * 2)
-    # new_capacity = ht.get_num_slots()
+        # Test resizing
+    old_capacity = ht.get_num_slots()
+    ht.resize(ht.capacity * 2)
+    new_capacity = ht.get_num_slots()
 
-    # print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
 
-    # # Test if data intact after resizing
-    # for i in range(1, 13):
-    #     print(ht.get(f"line_{i}"))
+    # Test if data intact after resizing
+    for i in range(1, 13):
+        print(ht.get(f"line_{i}"))
+
+    print("")
