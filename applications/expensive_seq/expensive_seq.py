@@ -1,13 +1,18 @@
 # Your code here
 
-
+store_dict = {}
 def expensive_seq(x, y, z):
     # Your code here
     if x <= 0: 
         return y + z
-    else:
-        if x >  0: 
-            return expensive_seq(x-1,y+1,z) + expensive_seq(x-2,y+2,z*2) + expensive_seq(x-3,y+3,z*3)
+    if x >  0: 
+        if (x,y,z) not in store_dict:
+            val = expensive_seq(x-1,y+1,z) + expensive_seq(x-2,y+2,z*2) + expensive_seq(x-3,y+3,z*3)
+            store_dict[(x,y,z)] = val
+            return val
+        else:
+            return store_dict[(x,y,z)]
+        
 
 
 if __name__ == "__main__":
